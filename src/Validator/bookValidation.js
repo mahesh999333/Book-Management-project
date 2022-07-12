@@ -1,5 +1,6 @@
 const mongoose = require('mongoose')
 
+//function for id verification
 const isValidId = function(id){
    if(!mongoose.Types.ObjectId.isValid(id)){
     return false
@@ -27,10 +28,12 @@ const checkValue = function (value) {
     return false;
   };
 
+  //function for ISBN verification
   const isValidISBN = function(isbn){
     return /^(?=(?:\d\-*){10}(?:(?:\D*\d){3})?$)[\d-]+$/.test(isbn)
   }
   
+  //function for book name verification
   const isValidBookTitle = function(name){
     return /^([A-Za-z0-9 .!?\:'()$]{2,70})+$/.test(name)
 }
