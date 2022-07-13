@@ -65,7 +65,7 @@ const createUser = async function(req,res){
             let userPhone = await userModel.find()
 
             //incase phone number is starting from +91 in body
-            if(phone.startsWith("+91",0)== true){
+            if(phone.startsWith("+91",0)== true){   
                 phone = phone.substring(4,14)
                 for(i=0; i<userPhone.length; i++){
                     if(userPhone[i].phone.startsWith("+91")){
@@ -87,7 +87,7 @@ const createUser = async function(req,res){
                 user.phone = phone
             }
         
-            //incase phone number is starting from 0 in body
+            //incase phone number is starting from 0 in body  
             if(phone.startsWith("0",0)== true){
                 phone = phone.substring(1,12)
                 for(i=0; i<userPhone.length; i++){
@@ -110,7 +110,7 @@ const createUser = async function(req,res){
                 user.phone = phone
             }
             
-            //incase there is just the phone number without prefix
+            //incase there is just the phone number without prefix 
             if(phone){
                 for(i=0; i<userPhone.length; i++){
                     if(userPhone[i].phone.startsWith("+91")){
@@ -181,7 +181,7 @@ const createUser = async function(req,res){
             user.address = address
 
             //validating street if there
-            if(req.body.address.street !== undefined){
+            if(req.body.address.street !== undefined){        //address{ street:" ", city:" " , "pincode": " "        }
                 if(!isValid(req.body.address.street)){
                     return res
                     .status(400)
@@ -231,7 +231,7 @@ const login = async function (req, res) {
           .status(400)
           .send({ status: false, message: "Please provide login details" });
       }
-      let {email, password} = req.body;
+      let {email, password} = req.body;   
   
       // validating the email
       if(email){

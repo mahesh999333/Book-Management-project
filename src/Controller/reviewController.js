@@ -72,7 +72,7 @@ const createReview = async function(req, res){
         //creating review
         const bookReview = await reviewModel.create(data)
         //updating the book document by increasing the number of reviews
-        const finalBook = await bookModel.findOneAndUpdate({_id:Id},{$inc:{reviews: 1}},{new:true}).select({__v:0})
+        const finalBook = await bookModel.findOneAndUpdate({_id:book._id},{$inc:{reviews: 1}},{new:true}).select({__v:0})
         
         //getting updated bookdata along with the review created
         finalBook._doc["reviewsData"] = bookReview

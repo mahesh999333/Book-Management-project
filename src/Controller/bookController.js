@@ -144,11 +144,6 @@ const getBooks = async function(req,res){
     try{
 
     
-        if(!isValidRequest(req.query)){
-            return  res
-                .status(400)
-                .send({status:false, message:"Enter valid Input"})
-        }
         let {userId, category, subcategory} = req.query
         let bookData ={};
 
@@ -186,7 +181,7 @@ const getBooks = async function(req,res){
           //condition for displaying the book
           bookData.isDeleted = false
          //fetching the books 
-        let bookDetails = await bookModel.find(bookData).select({_id:1, title:1, excerpt:1, userId:1, category:1, releasedAt:1, reviews:1})
+        let bookDetails = await bookModel.find(bookData).select({_id:1, title:1, excerpt:1, userId:1, category:1, releasedAt:1, reviews:1}).sort({title: 1})
         if(bookDetails.length == 0){
             return  res
                 .status(404)

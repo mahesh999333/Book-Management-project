@@ -27,8 +27,7 @@ const isValid = function (value) {
   };
 
 //function for verifying mobile number
-const isValidPhone
- = function(phone){
+const isValidPhone = function(phone){
     return  /^((\+91(-| )+)|0)?[6-9][0-9]{9}$/.test(phone); 
   };
 
