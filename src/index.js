@@ -4,15 +4,19 @@ const mongoose = require("mongoose");
 
 const route = require("./route/route.js");
 const app = express();
+const multer = require('multer');
+
+
+
 
 app.use(bodyParser.json()); // tells the system that you want json to be used
 // app.use(express.json())
 app.use(bodyParser.urlencoded({ extended: true })); 
-
+app.use(multer().any());
 // mongoDb connection
 mongoose
   .connect(
-    "mongodb+srv://Manasvi29:bharat2909@cluster0.r7a9dpa.mongodb.net/group36Database?retryWrites=true&w=majority",
+    "mongodb+srv://mahesh999333:mahesh999333@cluster0.tecej.mongodb.net/BookManagment",
     {
       useNewUrlParser: true,
     }
